@@ -16,6 +16,10 @@ scores = model.predict_proba(df.iloc[:,1:])[:,1]
 
 df['SCORE'] = scores
 
+@app.get("/")
+def read_root():
+    return {"Hello": "World"}
+
 @app.get("/{client}")
 def get_score(client: int):
     return float(df['SCORE'][df['SK_ID_CURR'] == client])
