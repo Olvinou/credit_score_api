@@ -17,7 +17,7 @@ def read_root():
     return {"Hello": "World"}
 
 @app.post("/receive_df")
-def receive_df(df_in: str):
+def receive_df(df_in):
     df = pd.DataFrame.read_json(df_in)
     
 @app.get("/{client}")
