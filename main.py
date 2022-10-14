@@ -12,13 +12,10 @@ app = FastAPI()
 model = pickle.load(open("best_model_custom.pkl","rb"))
 df = []
 
-@app.get("/")
-def read_root():
-    return {"Hello": "World"}
-
 @app.post("/receive_df")
 def receive_df(df_in):
-    df = pd.DataFrame.read_json(df_in)
+    df = df_in
+    
     
 @app.get("/{client}")
 def get_score(client: int):
