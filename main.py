@@ -18,4 +18,4 @@ df['SCORE'] = scores
 
 @app.get("/{client}")
 def get_score(client: int):
-    return float(df['SCORE'][df['SK_ID_CURR'] == client])
+    return float(df['SCORE'][df['SK_ID_CURR'] == int(client)])
