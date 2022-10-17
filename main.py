@@ -12,10 +12,7 @@ df = pd.read_csv('test_featureengineering.csv').iloc[:,1:]
 
 model = pickle.load(open("best_model_custom.pkl","rb"))
 
-scores = model.predict_proba(df.iloc[:,1:])[:,1]
-
-df['SCORE'] = scores
-
 @app.get("/{client}")
 def get_score(client: int):
-    return float(df['SCORE'][df['SK_ID_CURR'] == int(client)])
+
+    return float(model.predict_proba(df[df['SK_ID_CURR'] == int(client)].iloc[:,1:])[:,1])
