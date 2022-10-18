@@ -10,7 +10,7 @@ app = FastAPI()
 
 model = pickle.load(open("best_model_custom.pkl","rb"))
 
-df = pd.read_csv('test_featureengineering.csv').iloc[:,1:]
+df = pd.read_csv('test_for_app.csv').iloc[:,1:]
 
 explainer = shap.TreeExplainer(model)
 shap_values = explainer.shap_values(df.iloc[:,1:])
