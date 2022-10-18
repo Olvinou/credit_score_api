@@ -20,7 +20,7 @@ df = pd.read_csv('test_featureengineering.csv').iloc[:,1:]
 def get_score(client: int):
     df_score = df[df['SK_ID_CURR'] == int(client)].iloc[:,1:]
     
-    return list(float(model.predict_proba(df_score)[:,1]))
+    return float(model.predict_proba(df_score)[:,1])
 
 #@app.get("/{client}/shap_value")
 #def get_shap_value(client: int):
