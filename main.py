@@ -4,7 +4,7 @@
 from fastapi import FastAPI
 import pandas as pd
 import pickle
-import shap
+from shap import TreeExplainer
 
 app = FastAPI()
 
