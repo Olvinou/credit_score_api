@@ -16,7 +16,7 @@ df = pd.read_csv('test_featureengineering.csv').iloc[:,1:]
 #shap_values = explainer.shap_values(df.iloc[:,1:])
 
 
-@app.get("/{client}/score")
+@app.get("/{client})
 def get_score(client: int):
     df_score = df[df['SK_ID_CURR'] == int(client)].iloc[:,1:]
     
