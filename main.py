@@ -12,7 +12,7 @@ model = pickle.load(open("best_model_custom.pkl","rb"))
 
 df = pd.read_csv('test_for_app.csv').iloc[:,1:]
 
-explainer = shap.TreeExplainer(model)
+explainer = TreeExplainer(model)
 shap_values = explainer.shap_values(df.iloc[:,1:])
 
 
