@@ -12,8 +12,8 @@ model = pickle.load(open("best_model_custom.pkl","rb"))
 
 df = pd.read_csv('test_for_app.csv').iloc[:,1:]
 
-explainer = TreeExplainer(model)
-shap_values = explainer.shap_values(df.iloc[:,1:])
+#explainer = TreeExplainer(model)
+#shap_values = explainer.shap_values(df.iloc[:,1:])
 
 
 @app.get("/{client}/score")
@@ -22,13 +22,13 @@ def get_score(client: int):
     
     return float(model.predict_proba(df_score)[:,1])
 
-@app.get("/{client}/shap_value")
-def get_shap_value(client: int):
-    index = df.index[df['SK_ID_CURR'] == client].tolist()[0]
-    
-    return shap_values[0][index].tolist()
+#@app.get("/{client}/shap_value")
+#def get_shap_value(client: int):
+#    index = df.index[df['SK_ID_CURR'] == client].tolist()[0]
+#    
+#    return shap_values[0][index].tolist()
 
-@app.get("/{client}/expected_value")
-def get_shap_value(client: int):
+#@app.get("/{client}/expected_value")
+#def get_shap_value(client: int):
     
-    return explainer.expected_value[0]
+#    return explainer.expected_value[0]
