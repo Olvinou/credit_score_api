@@ -12,7 +12,7 @@ model = pickle.load(open("best_model_custom.pkl","rb"))
 
 df = pd.read_csv('test_featureengineering.csv').iloc[:,1:]
 
-shap_value = pickle.load(open("best_model_custom.pkl","rb"))
+shap_value = pickle.load(open("shap_value.pkl","rb"))
 
 expected_value = pickle.load(open("expected_value.pkl","rb"))
 
@@ -31,4 +31,4 @@ def get_shap_value(client: int):
 @app.get("/{client}/expected_value")
 def get_shap_value(client: int):
     
-    return expected_value
+    return float(expected_value)
