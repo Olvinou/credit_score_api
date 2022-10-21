@@ -12,9 +12,9 @@ model = pickle.load(open("best_model_custom.pkl","rb"))
 
 df = pd.read_csv('test_featureengineering.csv').iloc[:,1:]
 
-shap_value = pickle.load(open("shap_value.pkl","rb"))
+#shap_value = pickle.load(open("shap_value.pkl","rb"))
 
-expected_value = pickle.load(open("expected_value.pkl","rb"))
+#expected_value = pickle.load(open("expected_value.pkl","rb"))
 
 @app.get("/{client}")
 def get_score(client: int):
@@ -22,13 +22,13 @@ def get_score(client: int):
     
     return float(model.predict_proba(df_score)[:,1])
 
-@app.get("/{client}/shap_value")
-def get_shap_value(client: int):
-    index = df.index[df['SK_ID_CURR'] == client].tolist()[0]
+#@app.get("/{client}/shap_value")
+#def get_shap_value(client: int):
+#    index = df.index[df['SK_ID_CURR'] == client].tolist()[0]
     
-    return shap_value[index]
+#    return shap_value[index]
 
-@app.get("/{client}/expected_value")
-def get_shap_value(client: int):
+#@app.get("/{client}/expected_value")
+#def get_shap_value(client: int):
     
-    return float(expected_value)
+#    return float(expected_value)
